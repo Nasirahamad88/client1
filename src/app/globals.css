@@ -2,26 +2,274 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+
+
+.pricing {
+    justify-content: center;
+    padding-bottom: 50px !important;
+    display: flex;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+.pricing .card-pricing {
+    background: linear-gradient(103.87deg, hsla(0, 0%, 100%, 0.03) -0.24%, rgba(175, 62, 244, 0.09) 100.42%);
+    padding: 43px 0;
+    border-radius: 15px;
+    margin-right: 23px;
+    margin-left: 0;
+    width: 280px;
+}
+
+.pricing .card-pricing:last-child {
+    margin-right: unset !important;
+}
+
+.pricing .card-pricing .card-header {
+    background-color: transparent;
+    padding: 0 46px 0 36px;
+    height: 65px;
+}
+
+.pricing .card-pricing .card-body {
+    padding: 10px 22px 0;
+    margin: 0;
+}
+
+.pricing .card-pricing .subscription-discount {
+    position: absolute;
+    top: -1px;
+    border-radius: 0 15px;
+    background: linear-gradient(180deg, #ff754b, #f4533e);
+    padding: 4px 16px;
+    right: -1px;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 18px;
+}
+
+.pricing .card-pricing .subscription-price {
+    display: inline;
+    float: right;
+    position: relative;
+    top: -5px;
+}
+
+.pricing .card-pricing .subscription-price .price {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;
+}
+
+.pricing .card-pricing .subscription-price .price-text {
+    display: flex;
+    flex-direction: column;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    color: hsla(0, 0%, 100%, 0.5);
+}
+
+.pricing .card-pricing .subscription-plan {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 140%;
+}
+
+.pricing .card-pricing .subscription-features {
+    margin-bottom: 22px !important;
+    padding-left: 15px;
+}
+
+@media (min-width: 1120px) {
+    .pricing .card-pricing .subscription-features {
+        height: 280px;
+    }
+}
+
+.pricing .card-pricing .subscription-features .text-muted {
+    color: hsla(0, 0%, 100%, 0.7) !important;
+}
+
+.pricing .card-pricing .subscription-features .text-muted::marker {
+    color: rgba(150, 135, 254, 0.7) !important;
+}
+
+.pricing .card-pricing .subscription-features li {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 140%;
+    padding-bottom: 15px;
+}
+
+.pricing .card-pricing .subscription-features li::marker {
+    color: #9687fe;
+    font-size: 13px;
+}
+
+.pricing .card-pricing .subscription-features li:last-of-type {
+    padding-bottom: 0;
+}
+
+.pricing .cta-button-yellow,
+.pricing .cta-text:lang(uk) {
+    display: flex;
+    justify-content: center;
+}
+
+.pricing .cta-button-yellow:lang(uk) {
+    text-transform: inherit;
+    letter-spacing: 0;
+    padding: 15px;
+}
+
+.pricing .popular .subscription-features {
+    padding-bottom: 12px;
+}
+
+.pricing .slick-dots {
+    position: relative;
+}
+
+.pricing .card-header {
+    padding: 0;
+}
+
+.pricing .slick-track {
+    height: 100%;
+}
+
+.pricing .popular {
+    border: 1px solid #9687fe;
+}
+
+
+.testimonial-slider {
+    padding: 20px;
+    background-color: #f9f9f9;
   }
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  
+  .testimonial {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: white;
+    text-align: center;
   }
-}
+  
+  .testimonial-title {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  .testimonial-rating span {
+    color: #ffd700;
+  }
+  
+  .testimonial-message {
+    margin: 10px 0;
+  }
+  
+  .testimonial-information {
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  .testimonial-information img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+  }
+  
+
+  .form-group {
+    margin-bottom: 31px;
+    position: relative;
+    z-index: 9999;
+  }
+  
+  .form-group p:nth-of-type(4) {
+    margin-top: 20px;
+  }
+  
+  .wpcf7-form-control-wrap .wpcf7-not-valid-tip {
+    font-size: 12px !important;
+  }
+  
+  .form-group label {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+    text-transform: capitalize;
+    color: rgba(255, 255, 255, 0.75);
+    position: relative;
+    left: 0;
+    top: 30px;
+    cursor: text;
+    user-select: none;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .form-group label.how {
+    margin-bottom: 15px;
+  }
+  
+  .form-group .form-control,
+  .form-group textarea,
+  .form-group .wpcf7-form-control {
+    background: transparent;
+    border-width: 0 0 1px 0;
+    border-color: white;
+    width: 100%;
+    padding: 10px 10px 5px 10px;
+    color: white;
+    border-radius: 0;
+    position: relative;
+    resize: vertical;
+    overflow: unset;
+    font-size: 16px;
+    color-scheme: dark;
+  }
+  
+  .form-group .form-control::-webkit-scrollbar,
+  .form-group textarea::-webkit-scrollbar,
+  .form-group .wpcf7-form-control::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .form-group .form-control::placeholder,
+  .form-group textarea::placeholder,
+  .form-group .wpcf7-form-control::placeholder {
+    color: red;
+  }
+  
+  .form-group .form-control:focus,
+  .form-group textarea:focus,
+  .form-group .wpcf7-form-control:focus {
+    outline: none;
+    box-shadow: none;
+    border-bottom: 1px solid #primary-color-01;
+    background-position: 0 0;
+  }
+  
+  .form-group .form-control:focus:-webkit-autofill,
+  .form-group textarea:focus:-webkit-autofill,
+  .form-group .wpcf7-form-control:focus:-webkit-autofill {
+    display: none !important;
+  }
+  
+  .form-group .form-control.simple,
+  .form-group textarea.simple,
+  .form-group .wpcf7-form-control.simple {
+    padding: 0 !important;
+    margin: -14px 0 0 0;
+    border: none !important;
+  }
+  
+  @media screen and (max-width: 1023px) {
+    .form-group .form-control:focus + label,
+    .form-group textarea:focus + label,
+    .form-group .wpcf7-form-control:focus + label {
+      top: -10px;
+      color: rgba(255, 255, 255, 0.85);
+    }
+  }
