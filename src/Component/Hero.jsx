@@ -20,7 +20,7 @@ const Hero = () => {
       {/* Video Section */}
       <div className="w-full md:w-[40%]">
         <video
-          className="rounded-lg w-full h-auto shadow-full"
+          className="rounded-xl w-full h-auto shadow-full"
           controls
           preload="none"
           autoPlay

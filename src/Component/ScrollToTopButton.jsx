@@ -99,10 +99,10 @@ const ScrollToTopButton = () => {
         onClick={scrollToTop}
         aria-label="Scroll to top"
       >
-         <div className="flex px-3 py-2 text-center justify-center align-middle gap-2">
+         <div className="flex   text-center justify-center align-middle gap-2">
 
-         <FontAwesomeIcon icon={faArrowUp} className="bg-custom-purple text-xl p-2 rounded-full"/>
-         <span className="pt-1" >Back to top</span> 
+         <FontAwesomeIcon icon={faArrowUp} className="bg-custom-purple text-xl hover:text-black hover:bg-white   p-3 rounded-full"/>
+         <span className="pt-3 pr-4 font-bold" >Back to top</span> 
          </div>
        
       </a>

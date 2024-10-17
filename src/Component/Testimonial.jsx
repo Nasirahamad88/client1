@@ -42,11 +42,11 @@ const Testimonial = () => {
   
 
   return (
-    <section>   <div >
+    <section className='lg:w-[95%] mx-auto'>   <div >
     <h2 className="section__title text-center pt-20">What Our Users say</h2>
   <div className="section__description text-center"> Join our creative small business community</div>
   </div>
-    <div className="testimonials testimonials-slider slick-slider slick-dotted w-[80%] mx-auto">
+    <div className="testimonials testimonials-slider slick-slider slick-dotted lg:w-[80%] mx-auto">
    
       <div className="slick-list draggable">
         <div className="slick-track" style={{ opacity: 1, width: '1825px', transform: 'translate3d(0px, 0px, 0px)' }}>

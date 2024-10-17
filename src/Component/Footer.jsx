@@ -38,14 +38,14 @@ const Footer = () => {
     </div>
 
     {/* Contact Section */}
-    <div className="w-full md:w-1/2 lg:w-1/3">
+    <div className="w-full  md:w-1/2 lg:w-1/2">
       <h2 className="text-lg font-semibold mb-4">Get in Touch</h2>
       <button className="py-2 px-4 bg-purple-600 rounded-lg hover:bg-purple-700 mb-4">Schedule a Call</button>
       <p className="mb-2">info@gmail.com</p>
       
       {/* WhatsApp Icon */}
-      <a href="https://wa.me/123456789" className="flex items-center space-x-2 text-green-500 hover:text-green-400">
-        <FontAwesomeIcon icon={faWhatsapp} className="w-6 h-6" />
+      <a href="https://wa.me/123456789" className="flex items-center space-x-2 text-white ">
+        <FontAwesomeIcon icon={faWhatsapp} className="w-10 h-6" />
         <span>WhatsApp Us</span>
       </a>
     </div>

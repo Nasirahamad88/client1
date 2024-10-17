@@ -1,107 +1,114 @@
 "use client";
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { faPlay,faArrowRight, faArrowLeft, faA } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 
-// Define your video data with the video source and an image
 const videos = [
-  { src: "/hero.mp4", image: "/logo/1.png" },
-  { src: "/hero.mp4", image: "/logo/2.png" },
-  { src: "/hero.mp4", image: "/logo/3.png" },
-  { src: "/hero.mp4", image: "/logo/4.png" },
-  { src: "/hero.mp4", image: "/logo/1.png" },
-  { src: "/hero.mp4", image: "/logo/2.png" },
-  { src: "/hero.mp4", image: "/logo/3.png" }
-];
+  { src: "/hero.mp4", },
+  { src: "/hero.mp4", },
+  { src: "/hero.mp4", },
+  { src: "/hero.mp4", },
+  { src: "/hero.mp4", },
+  { src: "/hero.mp4", },
+  { src: "/hero.mp4", },
+  { src: "/hero.mp4", },
+  { src: "/hero.mp4", },
+  { src: "/hero.mp4", },
+  { src: "/hero.mp4", },
+  { src: "/hero.mp4", },
+]
+  
+
+const responsive = {
+  superLargeDesktop: {
+    breakpoint: { max: 4000, min: 3000 },
+    items: 5,
+  },
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 5,
+  },
+  laptop: {
+    breakpoint: { max: 2700, min: 924 },
+    items: 4,
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 4,
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 3,
+  },
+};
 
 const VideoCarousel = () => {
-  const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
-  const [showVideoIndex, setShowVideoIndex] = useState(null); // Tracks which video to show
+  const [showVideoIndex, setShowVideoIndex] = useState(null);
 
-  const videosToShow = 2; // Number of videos to show on small screens
-
-  // Handle moving to the next video/image
-  const handleNext = () => {
-    setCurrentVideoIndex((prev) => (prev + 1) % videos.length); // Cyclic behavior
-    setShowVideoIndex(null); // Reset video on carousel change
+  const handlePlayClick = (index) => {
+    setShowVideoIndex(index);
   };
 
-  // Handle moving to the previous video/image
-  const handlePrev = () => {
-    setCurrentVideoIndex((prev) => (prev - 1 + videos.length) % videos.length); // Cyclic behavior
-    setShowVideoIndex(null); // Reset video on carousel change
+  const handleVideoEnded = () => {
+    setShowVideoIndex(null);
   };
 
-  // Toggle between showing image or video
-  const handleImageClick = (index) => {
-    setShowVideoIndex(index); // Show video on click
-  };
+  // Custom arrow components
+  const CustomLeftArrow = ({ onClick }) => (
+    <button onClick={onClick} className="absolute left-0 z-10 rounded-full flex items-center p-2 bg-custom-purple ">
+      <FontAwesomeIcon icon={faArrowLeft} className="text-white lg:text-3xl md:text-2xl hover:text-black" />
+    </button>
+  );
+
+  const CustomRightArrow = ({ onClick }) => (
+    <button onClick={onClick} className="absolute right-0 z-10 rounded-full flex items-center p-2 bg-custom-purple">
+      <FontAwesomeIcon icon={faArrowRight} className="text-white lg:text-3xl md:text-2xl hover:text-black" />
+    </button>
+  );
 
   return (
-    <div className="video-carousel flex flex-col items-center w-[90%] mx-auto py-20 relative">
-  <h1 className="text-3xl md:text-4xl text-white pb-6 font-bold lg:w-1/2 text-center">
-    Ready-made templates for your design ideas
-  </h1>
-  <p className="pb-6 text-center">Add a little bit of body text</p>
+    <div className="video-carousel flex flex-col items-center lg:w-[80%] w-[98%] mx-auto py-20 relative">
+      <h1 className="text-3xl md:text-4xl text-white pb-6 font-bold lg:w-1/2 text-center">
+        Ready-made templates for your design ideas
+      </h1>
+      <p className="pb-6 text-center">Add a little bit of body text</p>
 
-  {/* Carousel Container */}
-  <div className="flex overflow-hidden w-full">
-    <div
-      className="flex transition-transform duration-300 ease-in-out"
-      style={{
-        transform: `translateX(-${(currentVideoIndex * 100) / videosToShow}%)`
-      }}
-    >
-      {/* Loop over the videos array and display either image or video */}
-      {videos.map((video, index) => (
-        <div
-          key={index}
-          className="flex-none w-[33.33%] sm:w-[25%] md:w-[20%] p-2"
-        >
-          {showVideoIndex === index ? (
-            <video
-              className="w-full h-[140px] md:h-[300px] lg:h-[200px] rounded-lg object-cover"
-              controls
-              muted
-              autoPlay
-              playsInline
-            >
-              <source src={video.src} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          ) : (
-            <Image
-              className="w-full h-[100px] md:h-[300px] lg:h-[200px] rounded-lg object-cover cursor-pointer"
-              width={224}
-              height={104} 
-              src={video.image}
-              alt={`Video thumbnail ${index + 1}`}
-              onClick={() => handleImageClick(index)}
-            />
-          )}
-        </div>
-      ))}
+      <Carousel
+        responsive={responsive}
+        infinite={true}
+        className="w-full relative"
+        customLeftArrow={<CustomLeftArrow />}
+        customRightArrow={<CustomRightArrow />}
+      >
+        {videos.map((video, index) => (
+          <div key={index} className="flex flex-col items-center">
+            {showVideoIndex === index ? (
+              <video
+                className="w-32 lg:w-64 h-24  lg:h-44 md:h-96 rounded-2xl"
+                controls
+                autoPlay
+                muted
+                onEnded={handleVideoEnded} // Reset index when video ends
+              >
+                <source src={video.src} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            ) : (
+              <div
+                className="relative bg-slate-800 w-32 lg:w-64 h-24  lg:h-44 md:h-96 rounded-2xl cursor-pointer flex items-center justify-center"
+                onClick={() => handlePlayClick(index)}
+              >
+                <FontAwesomeIcon icon={faPlay} className="text-white lg:text-6xl md:text-3xl text-xl z-10" />
+                
+              </div>
+            )}
+          </div>
+        ))}
+      </Carousel>
     </div>
-  </div>
-
-  {/* Control Buttons */}
-  <div className="controls mt-16 space-x-4 absolute flex justify-between w-full top-1/2 transform -translate-y-1/2">
-    <button
-      onClick={handlePrev}
-      className="prev-button rounded-full flex items-center p-2 bg-custom-purple"
-    >
-      <FontAwesomeIcon icon={faArrowLeft} className="w-5 h-5 md:w-7 md:h-7 text-white" />
-    </button>
-    <button
-      onClick={handleNext}
-      className="next-button rounded-full flex items-center p-2 bg-custom-purple"
-    >
-      <FontAwesomeIcon icon={faArrowRight} className="w-5 h-5 md:w-7 md:h-7 text-white" />
-    </button>
-  </div>
-</div>
-
   );
 };
 
