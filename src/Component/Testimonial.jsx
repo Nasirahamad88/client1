@@ -1,112 +1,101 @@
-"use client";
 import React, { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRight, faArrowLeft, faStar } from '@fortawesome/free-solid-svg-icons';
+import Image from 'next/image';
+import Head from 'next/head';
 
-// Sample testimonial data
-const testimonials = [
+const testimonialsData = [
   {
-    quote: "This is an amazing product! It has changed my life.",
-    author: "John Doe",
-    position: "CEO, Company A",
+    title: 'An app that does all the work for you',
+    message:
+      'I love this app. It has ready-made templates, and you don’t need to worry about editing photos/videos.',
+    user: 'msvystun',
   },
   {
-    quote: "I can't believe how easy it is to use.",
-    author: "Jane Smith",
-    position: "Manager, Company B",
+    title: 'Very Impressive',
+    message:
+      'The moment I downloaded Templify I was incredibly impressed. I created sweet content for my ski trip in less than 2 minutes!',
+    user: 'C_eej',
   },
   {
-    quote: "Fantastic experience! Will definitely use it again.",
-    author: "Alice Johnson",
-    position: "Developer, Company C",
+    title: 'Fun and easy',
+    message:
+      'It takes less than 10 seconds to produce a great-quality video. It’s fun and addicting!',
+    user: 'RSP2019',
   },
   {
-    quote: "Great customer service and an excellent product!",
-    author: "Bob Brown",
-    position: "Designer, Company D",
+    title: 'Easy to use, Great experience',
+    message:
+      'Brilliant design, soft flow, and user-friendly. I really enjoyed using it. Well done!',
+    user: 'Mike Juni',
   },
   {
-    quote: "A game changer for my business. Thank you!",
-    author: "Charlie Green",
-    position: "Entrepreneur, Company E",
-  },
-  {
-    quote: "I loved the features and how intuitive it is!",
-    author: "Emily White",
-    position: "Marketer, Company F",
-  },
-  {
-    quote: "Excellent value for money. I'm very satisfied!",
-    author: "David Black",
-    position: "Analyst, Company G",
+    title: 'Free music inside app',
+    message:
+      'It’s a magic wand to create Instagram stories. I love the music, filters, and new templates every week!',
+    user: 'correy_lawson',
   },
 ];
 
-const testimonialsToShow = 3; // Number of testimonials to show at once in the carousel
+const Testimonial = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const testimonialsToShow = 3;
 
-const TestimonialCarousel = () => {
-  const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
-
-  // Handle moving to the next testimonial
-  const handleNext = () => {
-    setCurrentTestimonialIndex((prev) => (prev + 1) % testimonials.length); // Cyclic behavior
-  };
-
-  // Handle moving to the previous testimonial
-  const handlePrev = () => {
-    setCurrentTestimonialIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length); // Cyclic behavior
-  };
+  
 
   return (
-    <div className="testimonial-carousel flex flex-col items-center w-[90%] mx-auto py-40 relative">
-      <h1 className="text-4xl pb-10 font-bold w-full text-center text-white">
-        What Our Clients Say
-      </h1>
-      <p className='pb-5'>Add a little bit of body text</p>
-
-      {/* Carousel Container */}
-      <div className="flex overflow-hidden w-full">
-        <div
-          className="flex transition-transform duration-300 ease-in-out"
-          style={{
-            transform: `translateX(-${(currentTestimonialIndex * 100) / testimonialsToShow}%)`
-          }}
-        >
-          {/* Loop over the testimonials array and display testimonials */}
-          {testimonials.map((testimonial, index) => (
-            <div key={index} className="flex-none w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/3 p-4">
-              <div className="w-full p-12 rounded-lg shadow-2xl bg-[rgba(146,107,228,.1)]">
-                <p className="text-gray-500 text-lg italic">{testimonial.quote}</p>
-                <div className="flex mt-4">
-                  {[...Array(5)].map((_, starIndex) => (
-                    <FontAwesomeIcon key={starIndex} icon={faStar} className="text-yellow-500" />
-                  ))}
+    <section>   <div >
+    <h2 className="section__title text-center pt-20">What Our Users say</h2>
+  <div className="section__description text-center"> Join our creative small business community</div>
+  </div>
+    <div className="testimonials testimonials-slider slick-slider slick-dotted w-[80%] mx-auto">
+   
+      <div className="slick-list draggable">
+        <div className="slick-track" style={{ opacity: 1, width: '1825px', transform: 'translate3d(0px, 0px, 0px)' }}>
+          {testimonialsData
+            .slice(currentIndex, currentIndex + testimonialsToShow)
+            .map((testimonial, index) => (
+              <div
+                key={index}
+                className={`testimonial slick-slide slick-current ${index === 0 ? 'slick-active' : ''}`}
+                style={{ width: '343px' }}
+                role="tabpanel"
+                aria-hidden={index !== 0}
+                id={`slick-slide0${index}`}
+              >
+                <div className="testimonial-title">{testimonial.title}</div>
+                <div className="testimonial-rating">
+                  {Array(5)
+                    .fill(0)
+                    .map((_, i) => (
+                      <span key={i} className="clip-star clip-star-active"></span>
+                    ))}
                 </div>
-                <h3 className="mt-4 text-lg font-semibold">{testimonial.author}</h3>
-                <p className="text-gray-400">{testimonial.position}</p>
+                <div className="testimonial-message">{testimonial.message}</div>
+                <div className="testimonial-information">
+                  <div className="testimonial-information-user">{testimonial.user}</div>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
         </div>
       </div>
-
-      {/* Control Buttons */}
-      <div className="controls mt-10 space-x-4 absolute flex justify-between w-full mx-auto top-1/2 transform -translate-y-1/2">
-        <button
-          onClick={handlePrev}
-          className="prev-button rounded-full flex items-center p-2 bg-custom-purple text-white"
-        >
-          <FontAwesomeIcon icon={faArrowLeft} className="w-5 h-5" />
-        </button>
-        <button
-          onClick={handleNext}
-          className="next-button rounded-full flex items-center p-2 bg-custom-purple text-white"
-        >
-          <FontAwesomeIcon icon={faArrowRight} className="w-5 h-5" />
-        </button>
-      </div>
-    </div>
+      <ul className="slick-dots " role="tablist">
+        {testimonialsData.map((_, index) => (
+          <li key={index} role="presentation" className={index === currentIndex ? 'slick-active' : ''}>
+            <button
+              type="button"
+              role="tab"
+              aria-controls={`slick-slide0${index}`}
+              aria-label={`${index + 1} of ${testimonialsData.length}`}
+              aria-selected={index === currentIndex}
+              onClick={() => setCurrentIndex(index)} // Allow direct navigation to a specific testimonial
+            >
+              {index + 1}
+            </button>
+          </li>
+        ))}
+      </ul>
+      
+    </div></section>
   );
 };
 
-export default TestimonialCarousel;
+export default Testimonial;

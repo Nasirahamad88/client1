@@ -31,10 +31,10 @@ const Pricing = () => {
               <li>Editor</li>
               <li>Auto-sync files to song</li>
             </ul>
-            <a href="#" className="cta-button-yellow" style={{ color: "#ff7551" }}>
+            <a href="#" className="text-orange text-center mt-4" style={{ color: "#ff7551" }}>
               Download the app
             </a>
-            <a className="cta-button-yellow">Clear anytime</a>
+            <a className=" text-center" style={{ color: "#ff7551" }}>Clear anytime</a>
           </div>
         </div>
 
@@ -61,12 +61,12 @@ const Pricing = () => {
             </ul>
             <a
               href="#"
-              className="cta-button-yellow text-white rounded-full py-3 px-6 hover:bg-orange-300"
+              className="cta-button-yellow text-white rounded-full mt-4 py-3 px-6 hover:bg-orange-300"
               style={{ backgroundColor: "#ff7551" }}
             >
               Continue
             </a>
-            <a className="cta-button-yellow">Clear anytime</a>
+            <a className=" text-center" style={{ color: "#ff7551" }}>Clear anytime</a>
           </div>
         </div>
 
@@ -91,10 +91,10 @@ const Pricing = () => {
               <li>Editor</li>
               <li>Auto-sync files to song</li>
             </ul>
-            <a href="#" className="cta-button-yellow" style={{ color: "#ff7551" }}>
+            <a href="#" className="text-orange text-center mt-4" style={{ color: "#ff7551" }}>
               Download the app
             </a>
-            <a className="cta-button-yellow">Clear anytime</a>
+            <a className="text-orange text-center">Clear anytime</a>
           </div>
         </div>
       </div>
@@ -118,12 +118,17 @@ const Pricing = () => {
             rgba(255, 255, 255, 0.03) -0.24%,
             rgba(175, 62, 244, 0.09) 100.42%
           );
-          padding: 40px;
+          padding: 20px;
           border-radius: 15px;
           min-width: 280px; /* Minimum width for mobile */
           flex: 0 0 auto; /* Prevent shrinking */
           scroll-snap-align: start; /* Snap card to viewport */
         }
+       .subscription-features li {
+    list-style-type: disc; /* Adds bullet points */
+    margin-left: 10px; /* Indents bullet points */
+    color: var(--custom-purple); /* Use CSS variable or define your custom color */
+}
 
         .card-header {
           height: 65px;

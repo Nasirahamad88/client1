@@ -61,7 +61,7 @@ const VideoCarousel = () => {
         >
           {showVideoIndex === index ? (
             <video
-              className="w-full h-[140px] md:h-[300px] lg:h-[400px] rounded-lg object-cover"
+              className="w-full h-[140px] md:h-[300px] lg:h-[200px] rounded-lg object-cover"
               controls
               muted
               autoPlay
@@ -72,9 +72,9 @@ const VideoCarousel = () => {
             </video>
           ) : (
             <Image
-              className="w-full h-[140px] md:h-[300px] lg:h-[400px] rounded-lg object-cover cursor-pointer"
+              className="w-full h-[100px] md:h-[300px] lg:h-[200px] rounded-lg object-cover cursor-pointer"
               width={224}
-              height={164} // Adjust height proportionally
+              height={104} 
               src={video.image}
               alt={`Video thumbnail ${index + 1}`}
               onClick={() => handleImageClick(index)}

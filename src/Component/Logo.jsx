@@ -45,7 +45,7 @@ const AllLogo = () => {
             {logos.map((logo, index) => (
               <div
                 key={index}
-                className="h-32 w-32 mx-4 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out transform hover:scale-105 flex items-center justify-center"
+                className="h-16 w-32 mx-4 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out transform hover:scale-105 flex items-center justify-center"
               >
                 <Image
                   src={logo}

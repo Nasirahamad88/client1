@@ -15,7 +15,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className="shadow-md fixed w-full z-10 top-0"
+      className="shadow-md  w-full z-10 top-0"
       style={{
         backgroundColor: "hsla(240,100%,4%,1)",
         backgroundImage: `
@@ -58,7 +58,7 @@ radial-gradient(at 51% 52%, hsla(240,100%,4%,1) 0px, transparent 50%);
             Blog
           </Link>
           {/* Search Icon */}
-          <button className="text-white">
+          <button className="text-white pt-2">
             <FontAwesomeIcon icon={faSearch} className="w-5 h-5 text-white" />
           </button>
         </div>
@@ -106,7 +106,7 @@ radial-gradient(at 51% 52%, hsla(240,100%,4%,1) 0px, transparent 50%);
           Blog
         </Link>
         {/* Search Icon */}
-        <button className="block py-2 px-4 text-gray-300 hover:bg-gray-800">
+        <button className="block py-3 px-4 text-gray-300 hover:bg-gray-800">
           <FontAwesomeIcon icon={faSearch} className="w-5 h-5 text-white" />
         </button>
       </div>
